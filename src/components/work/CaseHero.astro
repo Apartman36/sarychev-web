@@ -1,0 +1,94 @@
+---
+import StackTags from "../common/StackTags.astro";
+import Badge from "../common/Badge.astro";
+import type { Locale } from "../../utils/site";
+import { t } from "../../i18n/ui";
+
+interface Props {
+  entry: {
+    data: {
+      title: string;
+      summary: string;
+      category: string;
+      visibility: "public" | "private" | "client" | "academic" | "experiment";
+      date: string;
+      repoUrl?: string;
+      stack: string[];
+      metrics?: string[];
+    };
+  };
+  locale: Locale;
+}
+
+const { entry, locale } = Astro.props;
+const data = entry.data;
+---
+
+<section class="case-hero section">
+  <div class="container">
+    <div class="case-shell">
+      <p class="eyebrow">{data.category}</p>
+      <h1>{data.title}</h1>
+      <p class="summary">{data.summary}</p>
+      <div class="meta">
+        <Badge label={t(locale, data.visibility)} tone="accent" />
+        <Badge label={data.date} />
+      </div>
+      <StackTags stack={data.stack} />
+      {data.metrics && (
+        <div class="metrics">
+          {data.metrics.map((metric) => <p>{metric}</p>)}
+        </div>
+      )}
+      {data.repoUrl && <a class="repo" href={data.repoUrl}>{t(locale, "code")}</a>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-hero {
+    padding-bottom: 36px;
+  }
+
+  .case-shell {
+    max-width: 900px;
+  }
+
+  h1 {
+    margin: 0.5rem 0 1rem;
+    font-size: clamp(2.5rem, 7vw, 5.4rem);
+    line-height: 0.94;
+    letter-spacing: 0;
+  }
+
+  .summary {
+    max-width: 760px;
+    color: var(--muted-2);
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+  }
+
+  .meta,
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 1.1rem 0;
+  }
+
+  .metrics p {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .repo {
+    display: inline-flex;
+    margin-top: 1.1rem;
+    color: var(--accent-2);
+    font-weight: 800;
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/common/SectionHeader.astro";
+
+const locale = "ru";
+const sections = [
+  ["Текущий фокус", ["Local research workflows", "Агентная разработка с ChatGPT, Qwen Code и OpenCode", "Astro portfolio system", "MCP/RAG experiments"]],
+  ["Недавние проекты", ["research-local-xiaomi", "msfo-global-mvp", "swiss-krono-analytics-mvp"]],
+  ["Рабочий стиль", ["research -> spec -> agent implementation -> review -> tests -> deploy"]],
+];
+---
+
+<BaseLayout
+  title="Сейчас - Антоний Сарычев"
+  description="Над чем Антоний Сарычев работает и что изучает прямо сейчас."
+  lang={locale}
+  path="/ru/now/"
+>
+  <section class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Сейчас" title="Над чем я работаю и что изучаю прямо сейчас." />
+      <div class="page-grid">
+        {sections.map(([title, items]) => (
+          <article>
+            <h2>{title}</h2>
+            <ul>{(items as string[]).map((item) => <li>{item}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  article {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.8rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted-2);
+  }
+
+  @media (max-width: 760px) {
+    .page-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

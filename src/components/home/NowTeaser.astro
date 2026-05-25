@@ -1,0 +1,62 @@
+---
+import Button from "../common/Button.astro";
+import { localePath, type Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = locale === "en"
+  ? {
+      title: "Currently building",
+      text: "Local research workflows, AI agents, this Astro casebook, and MCP/RAG experiments around practical business tasks.",
+      cta: "Now",
+    }
+  : {
+      title: "Сейчас в работе",
+      text: "Local research workflow, AI-агенты, этот Astro-кейсбук и MCP/RAG-эксперименты вокруг прикладных бизнес-задач.",
+      cta: "Сейчас",
+    };
+---
+
+<section class="section">
+  <div class="container now-box">
+    <div>
+      <p class="eyebrow">{copy.title}</p>
+      <p>{copy.text}</p>
+    </div>
+    <Button href={localePath(locale, "/now/")}>{copy.cta}</Button>
+  </div>
+</section>
+
+<style>
+  .now-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--muted-2);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.4rem;
+    color: var(--accent);
+  }
+
+  @media (max-width: 680px) {
+    .now-box {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+</style>

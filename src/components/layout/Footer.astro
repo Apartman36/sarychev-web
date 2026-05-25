@@ -1,0 +1,54 @@
+---
+import type { Locale } from "../../utils/site";
+import { links } from "../../data/links";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© {new Date().getFullYear()} Antonii Sarychev</p>
+    <nav aria-label={locale === "en" ? "Footer links" : "Ссылки в подвале"}>
+      <a href={links.emailHref}>{links.email}</a>
+      <a href={links.telegram}>Telegram</a>
+      <a href={links.github}>GitHub</a>
+      <a href={links.x}>X</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    color: var(--muted);
+  }
+
+  .footer-inner,
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--muted-2);
+  }
+
+  @media (max-width: 720px) {
+    .footer-inner,
+    nav {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

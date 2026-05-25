@@ -1,0 +1,54 @@
+---
+import type { Locale } from "../../utils/site";
+import { absoluteUrl, siteConfig } from "../../utils/site";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Locale;
+  path: string;
+  type?: "website" | "article";
+}
+
+const { title, description, lang, path, type = "website" } = Astro.props;
+const canonical = absoluteUrl(path);
+const otherLocale = lang === "en" ? "ru" : "en";
+const otherPath = path.replace(/^\/(en|ru)(\/|$)/, `/${otherLocale}$2`);
+const currentOg = absoluteUrl(siteConfig.ogImage);
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Antonii Sarychev",
+  url: absoluteUrl("/en/"),
+  sameAs: ["https://github.com/Apartman36", "https://x.com/apartmanchik"],
+  email: "mailto:Sae230704@yandex.ru",
+  jobTitle: "AI/LLM Developer and AI Integration Engineer",
+  knowsAbout: ["LLM APIs", "AI agents", "MCP", "RAG", "FastAPI", "Document AI", "Docker"],
+};
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Antonii Sarychev",
+  url: absoluteUrl("/en/"),
+  inLanguage: ["en", "ru"],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang={lang} href={canonical} />
+<link rel="alternate" hreflang={otherLocale} href={absoluteUrl(otherPath)} />
+<link rel="alternate" hreflang="x-default" href={absoluteUrl("/en/")} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={currentOg} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={currentOg} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />

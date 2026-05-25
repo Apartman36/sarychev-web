@@ -1,0 +1,33 @@
+---
+import Badge from "../common/Badge.astro";
+import type { Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const items = locale === "en"
+  ? ["12+ public repositories", "MCP tools", "RAG over internal docs", "Local LLM workflows", "FastAPI / Docker / TypeScript"]
+  : ["12+ публичных репозиториев", "MCP-инструменты", "RAG по внутренним документам", "Локальные LLM-workflow", "FastAPI / Docker / TypeScript"];
+---
+
+<section class="proof">
+  <div class="container proof-inner">
+    {items.map((item, index) => <Badge label={item} tone={index === 0 ? "accent" : "default"} />)}
+  </div>
+</section>
+
+<style>
+  .proof {
+    border-block: 1px solid var(--border);
+    background: rgba(17, 17, 20, 0.54);
+    padding: 1rem 0;
+  }
+
+  .proof-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+</style>

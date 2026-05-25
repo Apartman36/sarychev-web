@@ -1,0 +1,50 @@
+---
+title: "neuro_apk"
+summary: "Full-stack прототип AI-сотрудника для АПК: RAG, локальная LLM-интеграция, crawler, FastAPI backend, PostgreSQL, Qdrant и Docker Compose."
+category: "RAG / Full-stack AI"
+visibility: "academic"
+featured: true
+date: "2025"
+repoUrl: "https://github.com/Apartman36/neuro_apk"
+stack: ["Next.js", "FastAPI", "PostgreSQL", "Qdrant", "LM Studio", "Docker Compose"]
+capabilities: ["RAG", "Full-stack AI", "Local LLM"]
+metrics: ["Показывает end-to-end архитектуру AI-системы: от frontend до vector search и local inference."]
+order: 2
+lang: "ru"
+canonicalSlug: "neuro-apk"
+architecture: ["Next.js UI", "FastAPI backend", "Crawler", "PostgreSQL", "Qdrant", "LM Studio"]
+---
+
+## Контекст
+
+`neuro_apk` - учебный full-stack прототип AI-сотрудника для агробизнеса. Проект соединяет frontend, backend, crawler, database, vector search и локальный model runtime.
+
+## Проблема
+
+В агробизнесе знания часто распределены между источниками, повторяющимися вопросами и domain-specific документами. Прототип проверяет, как RAG-система может сделать эту информацию полезнее.
+
+## Ограничения
+
+- Локальная LLM-интеграция через LM Studio.
+- Full-stack архитектура, а не один notebook.
+- Воспроизводимый запуск через Docker Compose.
+- RAG pipeline с vector database.
+
+## Подход
+
+Система использует Next.js frontend, FastAPI backend для orchestration, PostgreSQL для структурированных данных, Qdrant для vector retrieval и crawler для сбора источников.
+
+## Implementation highlights
+
+- Разделение UI, API, storage, retrieval и inference.
+- Docker Compose для воспроизводимого local environment.
+- Vector search как отдельный компонент системы.
+- Backend построен вокруг API boundaries.
+
+## Результат
+
+Это работающий prototype, который демонстрирует end-to-end AI architecture от frontend до vector search и local inference.
+
+## Что это демонстрирует
+
+RAG architecture, local LLM integration, Docker delivery и full-stack AI MVP thinking.

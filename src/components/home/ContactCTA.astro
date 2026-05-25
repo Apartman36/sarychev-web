@@ -1,0 +1,91 @@
+---
+import { links } from "../../data/links";
+import type { Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = locale === "en"
+  ? {
+      title: "Bring a messy AI task.",
+      text: "I can help turn it into a scoped MVP, internal tool, research workflow, parser, RAG system, or agent integration.",
+      email: "Email",
+    }
+  : {
+      title: "Приносите хаотичную AI-задачу.",
+      text: "Я помогу превратить её в scoped MVP, внутренний инструмент, research workflow, parser, RAG-систему или agent integration.",
+      email: "Email",
+    };
+---
+
+<section class="section contact-section">
+  <div class="container contact-box">
+    <div>
+      <p class="eyebrow">contact</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.text}</p>
+    </div>
+    <nav aria-label="Contact links">
+      <a href={links.emailHref}>{copy.email}</a>
+      <a href={links.telegram}>Telegram</a>
+      <a href={links.github}>GitHub</a>
+      <a href={links.x}>X</a>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-top: 0;
+  }
+
+  .contact-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    border: 1px solid rgba(245, 166, 35, 0.28);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.1), rgba(255,255,255,0.012)), var(--surface);
+    padding: clamp(1.2rem, 4vw, 2rem);
+  }
+
+  h2 {
+    margin: 0.25rem 0 0.75rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 0.95;
+  }
+
+  p:not(.eyebrow) {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted-2);
+  }
+
+  nav {
+    display: grid;
+    gap: 0.7rem;
+    align-content: center;
+  }
+
+  nav a {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.18);
+    color: var(--text);
+    padding: 0.65rem 0.8rem;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  @media (max-width: 720px) {
+    .contact-box {
+      grid-template-columns: 1fr;
+    }
+
+    nav {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

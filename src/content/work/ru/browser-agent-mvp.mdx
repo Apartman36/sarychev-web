@@ -1,0 +1,50 @@
+---
+title: "browser_agent_mvp"
+summary: "Локальный browser agent, который управляет видимым Chromium через Playwright: ARIA-снимки, tool-calling, память действий и логирование."
+category: "AI Agents / Browser Automation / MCP"
+visibility: "public"
+featured: true
+date: "2025"
+repoUrl: "https://github.com/Apartman36/browser_agent_mvp"
+stack: ["Playwright", "MCP", "tool calling", "ARIA snapshots", "action logging"]
+capabilities: ["AI Agents", "MCP", "Browser Automation"]
+metrics: ["Показывает практический agent loop design для browser automation."]
+order: 3
+lang: "ru"
+canonicalSlug: "browser-agent-mvp"
+architecture: ["Пользовательская задача", "ARIA snapshot", "Agent loop", "Tool schema", "Visible Chromium", "Action log"]
+---
+
+## Контекст
+
+`browser_agent_mvp` - локальный browser agent, который управляет видимым Chromium через Playwright. Фокус проекта - практическая browser automation без заранее прописанных selectors для каждого действия.
+
+## Проблема
+
+Browser agents должны понимать меняющиеся страницы, выбирать действия, помнить недавние шаги и оставлять логи для ревью. Обычный selector script для этого слишком хрупкий.
+
+## Ограничения
+
+- Browser остаётся видимым для проверки.
+- Действия описаны как structured tool calls.
+- Agent loop требует memory и result logging.
+- MCP server нужен для подключения внешних tools.
+
+## Подход
+
+Agent читает ARIA snapshot страницы, выбирает structured actions, выполняет их через Playwright, хранит recent action memory и пишет результаты в логи.
+
+## Implementation highlights
+
+- ARIA snapshots как слой представления страницы.
+- Tool calls через schemas.
+- Recent action memory против повторяющихся и противоречивых шагов.
+- MCP server с browser tools для внешнего agent connection.
+
+## Результат
+
+Проект показывает practical agent loop design для browser automation: explicit state, visible execution и reviewable logs.
+
+## Что это демонстрирует
+
+Agent loop design, Playwright automation, MCP tools и human-reviewable browser workflows.

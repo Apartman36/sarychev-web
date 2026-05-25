@@ -1,0 +1,85 @@
+---
+import SectionHeader from "../common/SectionHeader.astro";
+import type { Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = locale === "en"
+  ? {
+      eyebrow: "How I build",
+      title: "Agentic development with review loops.",
+      text: "Most of my projects start as unclear tasks. I turn them into research notes, specs, implementation prompts, review loops, tests, and deployable MVPs.",
+      steps: ["Research", "Specification", "Agent implementation", "Review", "Testing", "Deploy"],
+    }
+  : {
+      eyebrow: "Как я работаю",
+      title: "Агентная разработка с review loop.",
+      text: "Большинство моих проектов начинается с неясной задачи. Я превращаю её в research, ТЗ, агентную реализацию, ревью, тесты и деплой.",
+      steps: ["Research", "ТЗ", "Agent implementation", "Review", "Тесты", "Деплой"],
+    };
+---
+
+<section class="section workflow-section">
+  <div class="container">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} description={copy.text} />
+    <ol class="pipeline">
+      {copy.steps.map((step, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{step}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .workflow-section {
+    border-block: 1px solid var(--border);
+    background: rgba(17, 17, 20, 0.45);
+  }
+
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    min-height: 118px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #0d0d10;
+    padding: 0.9rem;
+  }
+
+  span {
+    display: block;
+    margin-bottom: 1.4rem;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+  }
+
+  strong {
+    line-height: 1.2;
+  }
+
+  @media (max-width: 980px) {
+    .pipeline {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .pipeline {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

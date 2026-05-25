@@ -1,0 +1,50 @@
+---
+title: "browser_agent_mvp"
+summary: "Local browser agent that controls visible Chromium through Playwright using ARIA snapshots, structured tool calls, memory, and logging."
+category: "AI Agents / Browser Automation / MCP"
+visibility: "public"
+featured: true
+date: "2025"
+repoUrl: "https://github.com/Apartman36/browser_agent_mvp"
+stack: ["Playwright", "MCP", "tool calling", "ARIA snapshots", "action logging"]
+capabilities: ["AI Agents", "MCP", "Browser Automation"]
+metrics: ["Demonstrates practical agent loop design for browser automation."]
+order: 3
+lang: "en"
+canonicalSlug: "browser-agent-mvp"
+architecture: ["User task", "ARIA page snapshot", "Agent loop", "Tool schema", "Visible Chromium", "Action log"]
+---
+
+## Context
+
+`browser_agent_mvp` is a local browser agent that controls visible Chromium through Playwright. It focuses on practical browser automation without relying on predefined selectors for every action.
+
+## Problem
+
+Browser agents need to reason over changing pages, choose actions, remember recent steps, and leave logs that can be inspected. A brittle selector script is not enough for multi-step tasks.
+
+## Constraints
+
+- The browser remains visible for inspection.
+- Actions are represented as structured tool calls.
+- The agent loop needs memory and result logging.
+- External connection through MCP tools is part of the design.
+
+## Approach
+
+The agent reads an ARIA snapshot of the page, chooses structured actions, executes them through Playwright, stores recent action memory, and logs results for review.
+
+## Implementation highlights
+
+- ARIA snapshots as the page representation layer.
+- Tool calls described with schemas.
+- Recent action memory to reduce repeated or contradictory steps.
+- MCP server exposing browser tools for external agent connection.
+
+## Result
+
+The project demonstrates practical agent loop design for browser automation, with explicit state, visible execution, and reviewable logs.
+
+## What it demonstrates
+
+Agent loop design, Playwright automation, MCP tool exposure, and human-reviewable browser workflows.

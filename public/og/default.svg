@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+  <g opacity="0.28">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200" stroke="#1F1F23"/>
+    <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630" stroke="#1F1F23"/>
+  </g>
+  <rect x="80" y="80" width="1040" height="470" rx="18" fill="#111114" stroke="#1F1F23"/>
+  <text x="120" y="155" fill="#F5A623" font-family="Consolas, monospace" font-size="28">~/ ai-integration-engineer</text>
+  <text x="120" y="265" fill="#E8E8EA" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="800">Antonii Sarychev</text>
+  <text x="120" y="345" fill="#B6B6BE" font-family="Segoe UI, Arial, sans-serif" font-size="38">Agents · MCP tools · RAG pipelines · Document AI</text>
+  <text x="120" y="440" fill="#7EE787" font-family="Consolas, monospace" font-size="30">research -> spec -> implementation -> review -> tests -> deploy</text>
+</svg>

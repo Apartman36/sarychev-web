@@ -1,0 +1,49 @@
+---
+title: "research-local-xiaomi"
+summary: "Локальный research-workflow, который превращает web-evidence в структурированные отчёты с планированием, критикой, учётом usage и воспроизводимыми результатами."
+category: "Local LLM / Research Automation"
+visibility: "public"
+featured: true
+date: "2026"
+repoUrl: "https://github.com/Apartman36/research-local-xiaomi"
+stack: ["TypeScript", "CLI", "local LLM", "web search", "structured reports"]
+capabilities: ["Local LLM", "AI Agents", "Research Automation"]
+metrics: ["Показывает проектирование research pipeline вокруг локальных моделей и агентных review loop."]
+order: 1
+lang: "ru"
+canonicalSlug: "research-local-xiaomi"
+architecture: ["Задача", "План поиска", "Сбор evidence", "Критика", "Учёт usage", "Структурированный отчёт"]
+---
+
+## Контекст
+
+`research-local-xiaomi` - локальный CLI-workflow для research вокруг Xiaomi MiMo и web search в стиле OpenCode. Это не чат-интерфейс, а воспроизводимый research pipeline.
+
+## Проблема
+
+Research часто разваливается, когда план поиска, evidence, критика и итоговый вывод живут отдельно. Проект делает эти шаги явными, чтобы результат можно было проверить и повторить.
+
+## Ограничения
+
+- Local-first workflow без hosted backend.
+- Структурированный output вместо свободных заметок.
+- Usage tracking и critique встроены в процесс.
+
+## Подход
+
+Workflow разделяет планирование, сбор evidence, критику и генерацию отчёта. Так проще понять, откуда взялась гипотеза и где модели нужен review pass.
+
+## Implementation highlights
+
+- CLI-flow для повторяемых запусков.
+- Planning и critique до финального отчёта.
+- Структура output рассчитана на техническое ревью.
+- Local model workflow как практическое ограничение.
+
+## Результат
+
+Проект показывает, как Антоний проектирует research automation вокруг локальных моделей, структурированных артефактов и агентных review loop.
+
+## Что это демонстрирует
+
+Local LLM workflow design, evidence-oriented prompting, CLI product thinking и practical research automation.

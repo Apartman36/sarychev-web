@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionHeader from "../../../components/common/SectionHeader.astro";
+import WorkCard from "../../../components/work/WorkCard.astro";
+
+const locale = "en";
+const entries = (await getCollection("work", ({ data }) => data.lang === locale))
+  .sort((a, b) => a.data.order - b.data.order);
+const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Business MVP", "Analytics", "Experiments", "Academic / Full-stack"];
+---
+
+<BaseLayout
+  title="Work - Antonii Sarychev"
+  description="Curated AI integration case studies: agents, MCP tools, RAG pipelines, document AI, analytics, and business MVPs."
+  lang={locale}
+  path="/en/work/"
+>
+  <section class="section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Work"
+        title="Projects grouped by capability."
+        description="A curated view of public, private, client, academic, and experimental work. The homepage stays selective; this page gives the broader system."
+      />
+      <div class="filters" aria-label="Capability groups">
+        {groups.map((group) => <span>{group}</span>)}
+      </div>
+      <div class="work-list">
+        {entries.map((entry) => <WorkCard item={entry.data} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .filters span {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted-2);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .work-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 760px) {
+    .work-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/common/SectionHeader.astro";
+
+const locale = "ru";
+const groups = [
+  ["Hardware", ["RTX 5060 Ti 16GB", "32GB RAM", "Ryzen 8700"]],
+  ["Development environment", ["Windows", "PyCharmProjects workspace", "Git", "Node/npm", "Qwen Code", "OpenCode"]],
+  ["AI tools", ["ChatGPT", "Codex", "Claude Code", "Qwen Code", "OpenCode", "local LLM workflows"]],
+  ["Backend / AI stack", ["Python", "FastAPI", "Docker", "RAG", "MCP"]],
+  ["Frontend stack", ["Astro", "TypeScript", "Tailwind CSS"]],
+];
+---
+
+<BaseLayout title="Стек - Антоний Сарычев" description="Рабочая среда и стек Антония Сарычева для AI engineering." lang={locale} path="/ru/uses/">
+  <section class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Uses" title="Инструменты для AI integration work." description="Практический список стека, без shopping content." />
+      <div class="uses-grid">
+        {groups.map(([title, items]) => (
+          <article>
+            <h2>{title}</h2>
+            <ul>{(items as string[]).map((item) => <li>{item}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  article {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted-2);
+  }
+
+  @media (max-width: 800px) {
+    .uses-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import StackTags from "../common/StackTags.astro";
+import Badge from "../common/Badge.astro";
+import { localePath, type Locale } from "../../utils/site";
+import { t } from "../../i18n/ui";
+
+interface WorkItem {
+  title: string;
+  summary: string;
+  category: string;
+  visibility: "public" | "private" | "client" | "academic" | "experiment";
+  repoUrl?: string;
+  stack: string[];
+  metrics?: string[];
+  canonicalSlug: string;
+}
+
+interface Props {
+  item: WorkItem;
+  locale: Locale;
+}
+
+const { item, locale } = Astro.props;
+const href = localePath(locale, `/work/${item.canonicalSlug}/`);
+const result = item.metrics?.[0];
+const visibilityLabel = t(locale, item.visibility);
+---
+
+<article class="work-card">
+  <div class="card-top">
+    <Badge label={item.category} tone="accent" />
+    <Badge label={visibilityLabel} />
+  </div>
+  <h3><a href={href}>{item.title}</a></h3>
+  <p>{item.summary}</p>
+  <StackTags stack={item.stack} limit={6} />
+  {result && <p class="result">{result}</p>}
+  <div class="links">
+    <a href={href}>{t(locale, "caseStudy")}</a>
+    {item.repoUrl && <a href={item.repoUrl}>{t(locale, "code")}</a>}
+  </div>
+</article>
+
+<style>
+  .work-card {
+    display: grid;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.01)), var(--surface);
+    padding: 1.15rem;
+  }
+
+  .work-card:hover {
+    border-color: rgba(245, 166, 35, 0.36);
+  }
+
+  .card-top,
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted-2);
+  }
+
+  .result {
+    border-left: 2px solid var(--accent);
+    color: var(--text);
+    padding-left: 0.75rem;
+    font-size: 0.92rem;
+  }
+
+  .links a {
+    color: var(--accent-2);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+</style>

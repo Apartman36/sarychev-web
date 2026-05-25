@@ -1,0 +1,93 @@
+---
+import SectionHeader from "../common/SectionHeader.astro";
+import StackTags from "../common/StackTags.astro";
+import type { Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const data = {
+  en: {
+    eyebrow: "Capabilities",
+    title: "Systems around models, not just prompts.",
+    description: "The work is strongest where product ambiguity, AI constraints, and integration details meet.",
+    cards: [
+      ["Agentic workflows", "I design tool-using agent loops with explicit state, safe actions, memory, logging, and review points.", ["MCP", "Playwright", "tool calling"]],
+      ["RAG & knowledge systems", "Search pipelines over internal documents: chunking, embeddings, BM25, hybrid retrieval, access-aware answers, and evaluation loops.", ["Qdrant", "FAISS", "BM25"]],
+      ["Document AI / IDP", "Long PDFs and unstructured documents become structured data through OCR, anchors, LLM orchestration, and async backends.", ["OCR", "PyMuPDF", "FastAPI"]],
+      ["Business MVPs", "Focused tools for domain workflows: imports, reports, dashboards, automation, and deployable prototypes.", ["TypeScript", "Docker", "PostgreSQL"]],
+    ],
+  },
+  ru: {
+    eyebrow: "Компетенции",
+    title: "Системы вокруг моделей, а не просто промпты.",
+    description: "Самая сильная зона - там, где встречаются неясная задача, ограничения AI и интеграции.",
+    cards: [
+      ["Агентные workflow", "Проектирую агентные циклы с инструментами, состоянием, безопасными действиями, памятью, логированием и точками ревью.", ["MCP", "Playwright", "tool calling"]],
+      ["RAG и knowledge systems", "Собираю поиск по внутренним документам: chunking, embeddings, BM25, гибридный retrieval, роли доступа и проверяемые ответы.", ["Qdrant", "FAISS", "BM25"]],
+      ["Document AI / IDP", "Превращаю длинные PDF и неструктурированные документы в данные через OCR, anchors, LLM-оркестрацию и async backend.", ["OCR", "PyMuPDF", "FastAPI"]],
+      ["Business MVP", "Делаю прикладные MVP под доменные процессы: импорт, отчёты, dashboard, автоматизация и воспроизводимый деплой.", ["TypeScript", "Docker", "PostgreSQL"]],
+    ],
+  },
+}[locale];
+---
+
+<section class="section">
+  <div class="container">
+    <SectionHeader eyebrow={data.eyebrow} title={data.title} description={data.description} />
+    <div class="cap-grid">
+      {data.cards.map(([title, description, stack]) => (
+        <article>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <StackTags stack={stack as string[]} />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  article {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1rem;
+  }
+
+  h3 {
+    margin: 0 0 0.65rem;
+    font-size: 1.08rem;
+  }
+
+  p {
+    min-height: 130px;
+    margin: 0 0 1rem;
+    color: var(--muted-2);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 980px) {
+    .cap-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .cap-grid {
+      grid-template-columns: 1fr;
+    }
+
+    p {
+      min-height: auto;
+    }
+  }
+</style>

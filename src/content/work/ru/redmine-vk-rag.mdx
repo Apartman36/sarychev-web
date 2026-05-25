@@ -1,0 +1,49 @@
+---
+title: "Redmine MCP + VK Teams RAG"
+summary: "Клиентская работа: MCP-инструменты для Redmine и VK Teams RAG-бот с учётом ролей доступа по Wiki.js и PDF-регламентам."
+category: "MCP / Enterprise RAG"
+visibility: "client"
+featured: true
+date: "2025"
+stack: ["Python", "MCP", "RAG", "VK Teams API", "Wiki.js", "PDF", "hybrid search"]
+capabilities: ["MCP", "Enterprise RAG", "Internal Tools"]
+metrics: ["12 Redmine tools.", "Hybrid search по 200+ документам и 2-3k indexed fragments."]
+order: 5
+lang: "ru"
+canonicalSlug: "redmine-vk-rag"
+architecture: ["LLM agent", "MCP server", "Redmine tools", "Wiki.js + PDFs", "Hybrid retrieval", "VK Teams bot"]
+---
+
+## Контекст
+
+Это private/client work, поэтому код и чувствительные детали организации не публикуются. Работа объединила Redmine MCP tooling и corporate VK Teams RAG bot по Wiki.js и PDF-регламентам.
+
+## Проблема
+
+Внутренним командам нужны agents, которые работают с существующими системами и не раскрывают messy raw APIs. Knowledge search также должен учитывать роли доступа и границы источников.
+
+## Ограничения
+
+- Private/client environment.
+- Redmine actions нужно было представить как safe compact tools для LLM agent.
+- Search должен был работать по Wiki.js pages и PDF regulations.
+- Ответы должны учитывать access roles.
+
+## Подход
+
+Redmine-часть получила controlled MCP tool surface. RAG-часть объединила indexed fragments, hybrid retrieval и delivery через VK Teams.
+
+## Implementation highlights
+
+- 12 MCP tools для tasks, projects, users, metadata и reporting workflows.
+- Compact JSON output, safe errors, pagination, sorting и overdue task handling.
+- Role-aware retrieval по Wiki.js и PDF sources.
+- Hybrid search по 200+ documents и 2-3k indexed fragments.
+
+## Результат
+
+Работа показывает practical enterprise AI integration: controlled tool surfaces, internal system access и RAG по реальным corporate documents.
+
+## Что это демонстрирует
+
+MCP design, enterprise RAG, private integration work, safe agent outputs и internal assistant architecture.

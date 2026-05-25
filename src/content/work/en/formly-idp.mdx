@@ -1,0 +1,49 @@
+---
+title: "Formly IDP architecture"
+summary: "IDP architecture for long, unstructured documents: OCR, LLM orchestration, Smart Anchor extraction, async backend, queues, caching, and S3 storage."
+category: "IDP / Document AI"
+visibility: "client"
+featured: false
+date: "2025"
+stack: ["Python", "FastAPI", "asyncio", "Azure Document Intelligence", "PyMuPDF", "Pydantic", "Docker", "AWS S3"]
+capabilities: ["IDP / Document AI", "Async Backend", "LLM Orchestration"]
+metrics: ["Estimated form-filling time reduced from 40 minutes to about 3 minutes.", ">95% extraction accuracy reported for 20-50 page documents."]
+order: 6
+lang: "en"
+canonicalSlug: "formly-idp"
+architecture: ["Document upload", "OCR", "Smart Anchor extraction", "LLM orchestration", "Validation", "Async backend", "S3 storage"]
+---
+
+## Context
+
+Antonii worked as an AI Integration Engineer on IDP architecture for processing long, unstructured documents. The case is private/client work, so implementation details are intentionally summarized.
+
+## Problem
+
+Manual form filling from 20-50 page documents is slow and error-prone. The system needed to extract structured data while handling layout variation and imperfect OCR.
+
+## Constraints
+
+- Long unstructured documents.
+- OCR quality and page layout variability.
+- Async backend requirements with queues, caching, and storage.
+- Production-MVP expectations around reliability and reviewability.
+
+## Approach
+
+The architecture combined OCR, PyMuPDF processing, Smart Anchor extraction, LLM orchestration, Pydantic validation, FastAPI, queues, caching, Docker, and AWS S3 storage.
+
+## Implementation highlights
+
+- Smart Anchor algorithm for stable extraction from variable document layouts.
+- LLM orchestration around OCR and PDF parsing outputs.
+- Async FastAPI backend with queues and caching.
+- Pydantic models for structured validation.
+
+## Result
+
+Reported outcomes included estimated form-filling time reduced from 40 minutes to about 3 minutes and more than 95% extraction accuracy for 20-50 page documents.
+
+## What it demonstrates
+
+Document AI architecture, async backend engineering, LLM orchestration, OCR pipeline design, and careful handling of private client work.

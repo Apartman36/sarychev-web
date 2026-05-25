@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+import type { Locale } from "../utils/site";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import SEO from "../components/layout/SEO.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Locale;
+  path: string;
+  type?: "website" | "article";
+}
+
+const { title, description, lang, path, type = "website" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A0A0B" />
+    <SEO title={title} description={description} lang={lang} path={path} type={type} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{lang === "en" ? "Skip to content" : "К содержанию"}</a>
+    <Header locale={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={lang} />
+  </body>
+</html>

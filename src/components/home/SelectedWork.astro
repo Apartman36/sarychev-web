@@ -1,0 +1,64 @@
+---
+import SectionHeader from "../common/SectionHeader.astro";
+import WorkCard from "../work/WorkCard.astro";
+import Button from "../common/Button.astro";
+import { localePath, type Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+  items: any[];
+}
+
+const { locale, items } = Astro.props;
+const copy = locale === "en"
+  ? {
+      eyebrow: "Selected work",
+      title: "A curated casebook, not a repository dump.",
+      description: "Featured projects are chosen for AI integration signal: agents, MCP, RAG, IDP, local LLM workflows, and business MVP delivery.",
+      all: "All work",
+    }
+  : {
+      eyebrow: "Избранные работы",
+      title: "Кейсбук, а не свалка репозиториев.",
+      description: "На главной только проекты, которые усиливают позиционирование: agents, MCP, RAG, IDP, local LLM workflow и бизнес-MVP.",
+      all: "Все работы",
+    };
+---
+
+<section class="section">
+  <div class="container">
+    <div class="head-row">
+      <SectionHeader eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
+      <Button href={localePath(locale, "/work/")}>{copy.all}</Button>
+    </div>
+    <div class="work-grid">
+      {items.map((entry) => <WorkCard item={entry.data} locale={locale} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 760px) {
+    .head-row {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

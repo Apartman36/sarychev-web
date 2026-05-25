@@ -1,0 +1,43 @@
+---
+import type { Locale } from "../../utils/site";
+import { swapLocalePath } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const pathname = Astro.url.pathname;
+const enHref = swapLocalePath(pathname, "en");
+const ruHref = swapLocalePath(pathname, "ru");
+---
+
+<nav class="language-switcher" aria-label="Language switcher">
+  <a href={enHref} aria-current={locale === "en" ? "page" : undefined}>EN</a>
+  <a href={ruHref} aria-current={locale === "ru" ? "page" : undefined}>RU</a>
+</nav>
+
+<style>
+  .language-switcher {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 3px;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+  }
+
+  a {
+    border-radius: 6px;
+    color: var(--muted);
+    padding: 0.35rem 0.5rem;
+  }
+
+  a[aria-current="page"] {
+    background: rgba(245, 166, 35, 0.16);
+    color: var(--accent-2);
+  }
+</style>

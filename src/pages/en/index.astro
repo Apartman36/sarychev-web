@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/home/Hero.astro";
+import ProofStrip from "../../components/home/ProofStrip.astro";
+import Capabilities from "../../components/home/Capabilities.astro";
+import SelectedWork from "../../components/home/SelectedWork.astro";
+import Workflow from "../../components/home/Workflow.astro";
+import NowTeaser from "../../components/home/NowTeaser.astro";
+import ContactCTA from "../../components/home/ContactCTA.astro";
+
+const locale = "en";
+const work = (await getCollection("work", ({ data }) => data.lang === locale && data.featured))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Antonii Sarychev - AI Integration Engineer & LLM Developer"
+  description="AI/LLM developer building agents, MCP tools, RAG pipelines, document processing systems, and async backends."
+  lang={locale}
+  path="/en/"
+>
+  <Hero locale={locale} />
+  <ProofStrip locale={locale} />
+  <Capabilities locale={locale} />
+  <SelectedWork locale={locale} items={work} />
+  <Workflow locale={locale} />
+  <NowTeaser locale={locale} />
+  <ContactCTA locale={locale} />
+</BaseLayout>

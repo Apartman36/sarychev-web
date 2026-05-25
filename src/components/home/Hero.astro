@@ -1,0 +1,132 @@
+---
+import Button from "../common/Button.astro";
+import { links } from "../../data/links";
+import { localePath, type Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = {
+  en: {
+    headline: "I build AI systems that turn messy tasks into working tools.",
+    sub: "Agents, MCP tools, RAG pipelines, parsers, IDP workflows, and async backends - shipped as production-minded MVPs.",
+    view: "View work",
+    contact: "Contact",
+    resume: "Resume",
+  },
+  ru: {
+    headline: "Собираю прикладные AI-системы из хаотичных задач.",
+    sub: "AI-агенты, MCP-инструменты, RAG-пайплайны, парсеры, IDP и async backend - в формате production-MVP.",
+    view: "Работы",
+    contact: "Связаться",
+    resume: "Резюме",
+  },
+}[locale];
+---
+
+<section class="hero section">
+  <div class="container grid-2">
+    <div>
+      <p class="eyebrow">~/ ai-integration-engineer</p>
+      <h1>{copy.headline}</h1>
+      <p class="subhead">{copy.sub}</p>
+      <div class="cta-row">
+        <Button href={localePath(locale, "/work/")} variant="primary">{copy.view}</Button>
+        <Button href={links.emailHref}>{copy.contact}</Button>
+      </div>
+      <div class="secondary-links" aria-label="Profile links">
+        <a href={links.github}>GitHub</a>
+        <a href={links.x}>X</a>
+        <a href={links.resumeHref}>{copy.resume}</a>
+      </div>
+    </div>
+    <div class="terminal visual" aria-label="AI system workflow">
+      <div class="terminal-top">
+        <span></span><span></span><span></span>
+      </div>
+      <pre><code>task
+  -> research
+  -> specification
+  -> agent.loop
+       tools: [mcp, rag, parser]
+       state: explicit
+       review: required
+  -> tests
+  -> deployable_mvp
+
+output: report + working system</code></pre>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 92px;
+  }
+
+  h1 {
+    max-width: 760px;
+    margin: 0.75rem 0 1rem;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .subhead {
+    max-width: 690px;
+    color: var(--muted-2);
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+  }
+
+  .cta-row,
+  .secondary-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .cta-row {
+    margin-top: 1.6rem;
+  }
+
+  .secondary-links {
+    margin-top: 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+  }
+
+  .secondary-links a {
+    color: var(--muted-2);
+  }
+
+  .visual {
+    overflow: hidden;
+  }
+
+  .terminal-top {
+    display: flex;
+    gap: 0.45rem;
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem;
+  }
+
+  .terminal-top span {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--border-strong);
+  }
+
+  pre {
+    margin: 0;
+    overflow: auto;
+    padding: 1.35rem;
+    color: var(--code-green);
+    font-family: var(--mono);
+    font-size: clamp(0.78rem, 1.7vw, 0.98rem);
+    line-height: 1.7;
+  }
+</style>

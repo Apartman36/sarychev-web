@@ -1,0 +1,49 @@
+---
+title: "Redmine MCP + VK Teams RAG"
+summary: "Private client work: MCP tools for Redmine and a role-aware VK Teams RAG bot over Wiki.js and PDF regulations."
+category: "MCP / Enterprise RAG"
+visibility: "client"
+featured: true
+date: "2025"
+stack: ["Python", "MCP", "RAG", "VK Teams API", "Wiki.js", "PDF", "hybrid search"]
+capabilities: ["MCP", "Enterprise RAG", "Internal Tools"]
+metrics: ["12 Redmine tools.", "Hybrid search over 200+ documents and 2-3k indexed fragments."]
+order: 5
+lang: "en"
+canonicalSlug: "redmine-vk-rag"
+architecture: ["LLM agent", "MCP server", "Redmine tools", "Wiki.js + PDFs", "Hybrid retrieval", "VK Teams bot"]
+---
+
+## Context
+
+This is private client work, so code and sensitive organization details are not public. The work combined Redmine MCP tooling with a corporate VK Teams RAG bot over Wiki.js and PDF regulations.
+
+## Problem
+
+Internal teams need agents that can work with existing systems without exposing messy raw APIs. They also need knowledge search that respects roles and source boundaries.
+
+## Constraints
+
+- Private/client environment.
+- Redmine actions had to be represented as safe, compact tools for an LLM agent.
+- Search had to work across Wiki.js pages and PDF regulations.
+- Answers had to account for access roles.
+
+## Approach
+
+The Redmine side exposed a controlled MCP tool surface. The RAG side combined indexed fragments, hybrid retrieval, and VK Teams delivery for corporate use.
+
+## Implementation highlights
+
+- 12 MCP tools for task, project, user, metadata, and reporting workflows.
+- Compact JSON output, safe errors, pagination, sorting, and overdue task handling.
+- Role-aware retrieval over Wiki.js and PDF sources.
+- Hybrid search over 200+ documents and 2-3k indexed fragments.
+
+## Result
+
+The work demonstrates practical enterprise AI integration: controlled tool surfaces, internal system access, and RAG over real corporate documents.
+
+## What it demonstrates
+
+MCP design, enterprise RAG, private integration work, safe agent outputs, and internal assistant architecture.

@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { localePath } from "../utils/site";
+---
+
+<BaseLayout title="404 - Antonii Sarychev" description="Page not found." lang="en" path="/404/">
+  <section class="section">
+    <div class="container">
+      <div class="terminal not-found">
+        <h1>404</h1>
+        <pre><code>$ route.resolve
+error: page_not_found
+
+$ next
+open /en/ or /ru/</code></pre>
+        <p><a href={localePath("en", "/")}>English home</a> · <a href={localePath("ru", "/")}>Русская версия</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  pre {
+    color: var(--code-green);
+    font-family: var(--mono);
+    overflow: auto;
+  }
+
+  p {
+    color: var(--muted-2);
+  }
+
+  a {
+    color: var(--accent-2);
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+title: "Formly IDP architecture"
+summary: "IDP-архитектура для длинных неструктурированных документов: OCR, LLM-оркестрация, Smart Anchor extraction, async backend, очереди, кэширование и S3."
+category: "IDP / Document AI"
+visibility: "client"
+featured: false
+date: "2025"
+stack: ["Python", "FastAPI", "asyncio", "Azure Document Intelligence", "PyMuPDF", "Pydantic", "Docker", "AWS S3"]
+capabilities: ["IDP / Document AI", "Async Backend", "LLM Orchestration"]
+metrics: ["Estimated form-filling time reduced from 40 minutes to about 3 minutes.", ">95% extraction accuracy reported for 20-50 page documents."]
+order: 6
+lang: "ru"
+canonicalSlug: "formly-idp"
+architecture: ["Document upload", "OCR", "Smart Anchor extraction", "LLM orchestration", "Validation", "Async backend", "S3 storage"]
+---
+
+## Контекст
+
+Антоний работал как AI Integration Engineer над IDP architecture для обработки длинных неструктурированных документов. Это private/client work, поэтому implementation details намеренно обобщены.
+
+## Проблема
+
+Ручное заполнение форм по документам на 20-50 страниц занимает много времени и даёт ошибки. Система должна извлекать structured data при переменном layout и неидеальном OCR.
+
+## Ограничения
+
+- Длинные unstructured documents.
+- OCR quality и variability page layout.
+- Async backend с queues, caching и storage.
+- Production-MVP expectations по reliability и reviewability.
+
+## Подход
+
+Архитектура объединила OCR, PyMuPDF processing, Smart Anchor extraction, LLM orchestration, Pydantic validation, FastAPI, queues, caching, Docker и AWS S3 storage.
+
+## Implementation highlights
+
+- Smart Anchor algorithm для стабильного extraction из переменных layouts.
+- LLM orchestration вокруг OCR и PDF parsing outputs.
+- Async FastAPI backend с queues и caching.
+- Pydantic models для structured validation.
+
+## Результат
+
+Известные результаты: estimated form-filling time reduced from 40 minutes to about 3 minutes и >95% extraction accuracy reported for 20-50 page documents.
+
+## Что это демонстрирует
+
+Document AI architecture, async backend engineering, LLM orchestration, OCR pipeline design и аккуратную работу с private client cases.

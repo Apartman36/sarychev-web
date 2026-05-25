@@ -1,0 +1,75 @@
+---
+interface Props {
+  nodes?: string[];
+}
+
+const { nodes = [] } = Astro.props;
+---
+
+{nodes.length > 0 && (
+  <div class="diagram" aria-label="Architecture diagram">
+    {nodes.map((node, index) => (
+      <>
+        <div class="node">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{node}</strong>
+        </div>
+        {index < nodes.length - 1 && <div class="arrow" aria-hidden="true">→</div>}
+      </>
+    ))}
+  </div>
+)}
+
+<style>
+  .diagram {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.65rem;
+    margin: 2rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(245, 166, 35, 0.045), rgba(255,255,255,0.01)), var(--surface);
+    padding: 1rem;
+  }
+
+  .node {
+    display: grid;
+    min-width: 140px;
+    flex: 1 1 140px;
+    gap: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #0d0d10;
+    padding: 0.85rem;
+  }
+
+  span {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+  }
+
+  strong {
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+
+  .arrow {
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 680px) {
+    .diagram {
+      display: grid;
+    }
+
+    .arrow {
+      transform: rotate(90deg);
+      min-height: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import CaseHero from "../components/work/CaseHero.astro";
+import ArchitectureDiagram from "../components/work/ArchitectureDiagram.astro";
+import type { Locale } from "../utils/site";
+
+interface Props {
+  entry: any;
+  lang: Locale;
+}
+
+const { entry, lang } = Astro.props;
+const title = `${entry.data.title} — Antonii Sarychev`;
+const path = `/${lang}/work/${entry.data.canonicalSlug}/`;
+---
+
+<BaseLayout title={title} description={entry.data.summary} lang={lang} path={path} type="article">
+  <CaseHero entry={entry} locale={lang} />
+  <section class="case-body">
+    <div class="container case-grid">
+      <aside class="case-aside" aria-label={lang === "en" ? "Case metadata" : "Метаданные кейса"}>
+        <p class="mono">{entry.data.category}</p>
+        <p>{entry.data.capabilities.join(" / ")}</p>
+      </aside>
+      <article class="prose">
+        <slot />
+        <ArchitectureDiagram nodes={entry.data.architecture} />
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-body {
+    padding: 12px 0 84px;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .case-aside {
+    position: sticky;
+    top: 96px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1rem;
+  }
+
+  .case-aside p {
+    margin: 0;
+    color: var(--muted-2);
+  }
+
+  .case-aside .mono {
+    color: var(--accent);
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 840px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .case-aside {
+      position: static;
+    }
+  }
+</style>
