@@ -7,12 +7,12 @@ import WorkCard from "../../../components/work/WorkCard.astro";
 const locale = "ru";
 const entries = (await getCollection("work", ({ data }) => data.lang === locale))
   .sort((a, b) => a.data.order - b.data.order);
-const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Business MVP", "Analytics", "Experiments", "Academic / Full-stack"];
+const groups = ["Избранное", "AI-агенты", "MCP", "RAG", "IDP / Document AI", "Business MVP", "Аналитика", "Эксперименты", "Учебные / Full-stack"];
 ---
 
 <BaseLayout
   title="Работы - Антоний Сарычев"
-  description="Кураторский кейсбук по AI integration: agents, MCP, RAG, document AI, analytics и business MVP."
+  description="Кураторский кейсбук по AI-интеграции: AI-агенты, MCP, RAG, document AI, аналитика и business MVP."
   lang={locale}
   path="/ru/work/"
 >
@@ -21,10 +21,13 @@ const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Bus
       <SectionHeader
         eyebrow="Работы"
         title="Проекты сгруппированы по компетенциям."
-        description="Кураторский набор публичных, приватных, клиентских, учебных и экспериментальных работ. Главная остаётся компактной; здесь видна система шире."
+        description="Кураторский набор публичных, закрытых, клиентских, учебных и экспериментальных работ. Главная остаётся компактной; здесь видна система шире."
       />
-      <div class="filters" aria-label="Группы компетенций">
-        {groups.map((group) => <span>{group}</span>)}
+      <div class="capability-legend" aria-label="Группы компетенций">
+        <p>Группы компетенций</p>
+        <div>
+          {groups.map((group) => <span>{group}</span>)}
+        </div>
       </div>
       <div class="work-list">
         {entries.map((entry) => <WorkCard item={entry.data} locale={locale} />)}
@@ -34,16 +37,29 @@ const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Bus
 </BaseLayout>
 
 <style>
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .capability-legend {
+    display: grid;
+    gap: 0.55rem;
     margin-bottom: 1.2rem;
   }
 
-  .filters span {
+  .capability-legend p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+  }
+
+  .capability-legend div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .capability-legend span {
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.018);
     color: var(--muted-2);
     font-family: var(--mono);
     font-size: 0.78rem;

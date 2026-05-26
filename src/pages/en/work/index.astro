@@ -23,8 +23,11 @@ const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Bus
         title="Projects grouped by capability."
         description="A curated view of public, private, client, academic, and experimental work. The homepage stays selective; this page gives the broader system."
       />
-      <div class="filters" aria-label="Capability groups">
-        {groups.map((group) => <span>{group}</span>)}
+      <div class="capability-legend" aria-label="Capability groups">
+        <p>Capability groups</p>
+        <div>
+          {groups.map((group) => <span>{group}</span>)}
+        </div>
       </div>
       <div class="work-list">
         {entries.map((entry) => <WorkCard item={entry.data} locale={locale} />)}
@@ -34,16 +37,29 @@ const groups = ["Featured", "AI Agents", "MCP", "RAG", "IDP / Document AI", "Bus
 </BaseLayout>
 
 <style>
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .capability-legend {
+    display: grid;
+    gap: 0.55rem;
     margin-bottom: 1.2rem;
   }
 
-  .filters span {
+  .capability-legend p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+  }
+
+  .capability-legend div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .capability-legend span {
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.018);
     color: var(--muted-2);
     font-family: var(--mono);
     font-size: 0.78rem;

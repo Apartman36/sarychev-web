@@ -16,10 +16,10 @@ const nav = getNavigation(locale);
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href={localePath(locale, "/")} aria-label="Antonii Sarychev home">
+    <a class="brand" href={localePath(locale, "/")} aria-label={t(locale, "homeAria")}>
       <span>Antonii Sarychev</span>
     </a>
-    <nav class="main-nav" aria-label="Primary navigation">
+    <nav class="main-nav" aria-label={t(locale, "primaryNavigation")}>
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
     <div class="actions">

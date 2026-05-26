@@ -1,6 +1,7 @@
 ---
-import { withBase } from "../utils/site";
+import { absoluteUrl, withBase } from "../utils/site";
 const target = withBase("/en/");
+const ruTarget = withBase("/ru/");
 ---
 
 <!doctype html>
@@ -8,13 +9,20 @@ const target = withBase("/en/");
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
     <meta http-equiv="refresh" content={`0; url=${target}`} />
     <title>Antonii Sarychev</title>
-    <link rel="canonical" href={target} />
+    <link rel="canonical" href={absoluteUrl("/en/")} />
   </head>
   <body>
     <main>
-      <p><a href={target}>Open English version</a></p>
+      <h1>Antonii Sarychev</h1>
+      <p>The English version opens by default.</p>
+      <p>
+        <a href={target}>Open English version</a>
+        <span aria-hidden="true"> · </span>
+        <a href={ruTarget}>Открыть русскую версию</a>
+      </p>
     </main>
   </body>
 </html>

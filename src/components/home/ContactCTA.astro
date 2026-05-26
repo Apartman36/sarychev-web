@@ -1,6 +1,7 @@
 ---
 import { links } from "../../data/links";
 import type { Locale } from "../../utils/site";
+import { t } from "../../i18n/ui";
 
 interface Props {
   locale: Locale;
@@ -10,12 +11,14 @@ const { locale } = Astro.props;
 const copy = locale === "en"
   ? {
       title: "Bring a messy AI task.",
+      eyebrow: "contact",
       text: "I can help turn it into a scoped MVP, internal tool, research workflow, parser, RAG system, or agent integration.",
       email: "Email",
     }
   : {
       title: "Приносите хаотичную AI-задачу.",
-      text: "Я помогу превратить её в scoped MVP, внутренний инструмент, research workflow, parser, RAG-систему или agent integration.",
+      eyebrow: "связь",
+      text: "Я помогу превратить её в проверяемый MVP, внутренний инструмент, исследовательский workflow, парсер, RAG-систему или интеграцию с агентами.",
       email: "Email",
     };
 ---
@@ -23,11 +26,11 @@ const copy = locale === "en"
 <section class="section contact-section">
   <div class="container contact-box">
     <div>
-      <p class="eyebrow">contact</p>
+      <p class="eyebrow">{copy.eyebrow}</p>
       <h2>{copy.title}</h2>
       <p>{copy.text}</p>
     </div>
-    <nav aria-label="Contact links">
+    <nav aria-label={t(locale, "contactLinks")}>
       <a href={links.emailHref}>{copy.email}</a>
       <a href={links.telegram}>Telegram</a>
       <a href={links.github}>GitHub</a>

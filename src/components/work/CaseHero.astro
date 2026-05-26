@@ -34,7 +34,7 @@ const data = entry.data;
         <Badge label={t(locale, data.visibility)} tone="accent" />
         <Badge label={data.date} />
       </div>
-      <StackTags stack={data.stack} />
+      <StackTags stack={data.stack} locale={locale} />
       {data.metrics && (
         <div class="metrics">
           {data.metrics.map((metric) => <p>{metric}</p>)}

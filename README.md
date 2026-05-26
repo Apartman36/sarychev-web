@@ -34,13 +34,13 @@ Deployment is handled by `.github/workflows/deploy.yml`.
 The current GitHub Pages project URL is:
 
 ```text
-https://Apartman36.github.io/sarychev-web/
+https://apartman36.github.io/sarychev-web/
 ```
 
 Astro is configured for a repository project path:
 
 ```js
-site: "https://Apartman36.github.io"
+site: "https://apartman36.github.io"
 base: "/sarychev-web/"
 ```
 

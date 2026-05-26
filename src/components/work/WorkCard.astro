@@ -33,7 +33,7 @@ const visibilityLabel = t(locale, item.visibility);
   </div>
   <h3><a href={href}>{item.title}</a></h3>
   <p>{item.summary}</p>
-  <StackTags stack={item.stack} limit={6} />
+  <StackTags stack={item.stack} limit={6} locale={locale} />
   {result && <p class="result">{result}</p>}
   <div class="links">
     <a href={href}>{t(locale, "caseStudy")}</a>

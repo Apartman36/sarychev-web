@@ -16,7 +16,7 @@ architecture: ["LLM agent", "MCP server", "Redmine tools", "Wiki.js + PDFs", "Hy
 
 ## Контекст
 
-Это private/client work, поэтому код и чувствительные детали организации не публикуются. Работа объединила Redmine MCP tooling и corporate VK Teams RAG bot по Wiki.js и PDF-регламентам.
+Это закрытый клиентский проект, поэтому код и чувствительные детали организации не публикуются. Работа объединила Redmine MCP tooling и корпоративного VK Teams RAG-бота по Wiki.js и PDF-регламентам.
 
 ## Проблема
 
@@ -24,26 +24,26 @@ architecture: ["LLM agent", "MCP server", "Redmine tools", "Wiki.js + PDFs", "Hy
 
 ## Ограничения
 
-- Private/client environment.
+- Закрытая клиентская среда.
 - Redmine actions нужно было представить как safe compact tools для LLM agent.
-- Search должен был работать по Wiki.js pages и PDF regulations.
-- Ответы должны учитывать access roles.
+- Search должен был работать по Wiki.js pages и PDF-регламентам.
+- Ответы должны учитывать роли доступа.
 
 ## Подход
 
-Redmine-часть получила controlled MCP tool surface. RAG-часть объединила indexed fragments, hybrid retrieval и delivery через VK Teams.
+Redmine-часть получила controlled MCP tool surface. RAG-часть объединила indexed fragments, hybrid retrieval и доставку ответов через VK Teams.
 
-## Implementation highlights
+## Ключевые решения
 
 - 12 MCP tools для tasks, projects, users, metadata и reporting workflows.
-- Compact JSON output, safe errors, pagination, sorting и overdue task handling.
+- Compact JSON output, безопасные ошибки, pagination, sorting и обработка просроченных задач.
 - Role-aware retrieval по Wiki.js и PDF sources.
 - Hybrid search по 200+ documents и 2-3k indexed fragments.
 
 ## Результат
 
-Работа показывает practical enterprise AI integration: controlled tool surfaces, internal system access и RAG по реальным corporate documents.
+Работа показывает практическую enterprise AI integration: controlled tool surfaces, доступ к внутренним системам и RAG по реальным corporate documents.
 
 ## Что это демонстрирует
 
-MCP design, enterprise RAG, private integration work, safe agent outputs и internal assistant architecture.
+MCP design, enterprise RAG, закрытые интеграционные проекты, safe agent outputs и architecture внутренних ассистентов.

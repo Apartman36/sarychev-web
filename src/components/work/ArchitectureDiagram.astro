@@ -1,13 +1,17 @@
 ---
+import { t } from "../../i18n/ui";
+import type { Locale } from "../../utils/site";
+
 interface Props {
   nodes?: string[];
+  locale?: Locale;
 }
 
-const { nodes = [] } = Astro.props;
+const { nodes = [], locale = "en" } = Astro.props;
 ---
 
 {nodes.length > 0 && (
-  <div class="diagram" aria-label="Architecture diagram">
+  <div class="diagram" aria-label={t(locale, "architectureDiagram")}>
     {nodes.map((node, index) => (
       <>
         <div class="node">

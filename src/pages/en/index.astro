@@ -6,6 +6,7 @@ import ProofStrip from "../../components/home/ProofStrip.astro";
 import Capabilities from "../../components/home/Capabilities.astro";
 import SelectedWork from "../../components/home/SelectedWork.astro";
 import Workflow from "../../components/home/Workflow.astro";
+import BusinessAutomation from "../../components/home/BusinessAutomation.astro";
 import NowTeaser from "../../components/home/NowTeaser.astro";
 import ContactCTA from "../../components/home/ContactCTA.astro";
 
@@ -25,6 +26,7 @@ const work = (await getCollection("work", ({ data }) => data.lang === locale && 
   <Capabilities locale={locale} />
   <SelectedWork locale={locale} items={work} />
   <Workflow locale={locale} />
+  <BusinessAutomation locale={locale} />
   <NowTeaser locale={locale} />
   <ContactCTA locale={locale} />
 </BaseLayout>

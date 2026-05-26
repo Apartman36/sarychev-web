@@ -1,0 +1,117 @@
+---
+import Button from "../common/Button.astro";
+import { links } from "../../data/links";
+import type { Locale } from "../../utils/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = locale === "en"
+  ? {
+      eyebrow: "Business automation",
+      title: "Where this helps",
+      text: "I help turn unclear operational tasks into small AI systems: internal assistants, document pipelines, RAG search, MCP tools, and fast prototypes that teams can actually test.",
+      cta: "Discuss an automation idea",
+      items: [
+        ["Automate internal workflows", "Replace repetitive manual steps with small tools, agents, and structured pipelines."],
+        ["Prototype AI features fast", "Go from idea to testable MVP without spending months on architecture theater."],
+        ["Integrate LLMs into existing tools", "Connect models to documents, APIs, browsers, task trackers, and business systems."],
+      ],
+    }
+  : {
+      eyebrow: "Автоматизация",
+      title: "Где это полезно бизнесу",
+      text: "Помогаю превращать неясные операционные задачи в небольшие AI-системы: внутренних ассистентов, document pipelines, RAG-поиск, MCP-инструменты и быстрые прототипы, которые команда может проверить в работе.",
+      cta: "Обсудить задачу",
+      items: [
+        ["Автоматизация внутренних процессов", "Заменяю повторяющиеся ручные действия небольшими инструментами, агентами и пайплайнами."],
+        ["Быстрые AI-прототипы", "Помогаю пройти путь от идеи до проверяемого MVP без месяцев архитектурной подготовки."],
+        ["Интеграция LLM в существующие инструменты", "Подключаю модели к документам, API, браузеру, таск-трекерам и бизнес-системам."],
+      ],
+    };
+---
+
+<section class="section automation-section">
+  <div class="container automation-shell">
+    <div class="automation-copy">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+      <p>{copy.text}</p>
+      <Button href={links.emailHref} variant="primary">{copy.cta}</Button>
+    </div>
+    <div class="automation-items">
+      {copy.items.map(([title, text]) => (
+        <article>
+          <h3>{title}</h3>
+          <p>{text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .automation-section {
+    padding-top: 0;
+  }
+
+  .automation-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 1rem;
+    align-items: stretch;
+    border-block: 1px solid var(--border);
+    padding-block: clamp(1.4rem, 4vw, 2rem);
+  }
+
+  .automation-copy {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    line-height: 0.98;
+  }
+
+  .automation-copy p:not(.eyebrow),
+  .automation-items p {
+    margin: 0;
+    color: var(--muted-2);
+  }
+
+  .automation-items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  article {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #0d0d10;
+    padding: 1rem;
+  }
+
+  h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 940px) {
+    .automation-shell {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .automation-items {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

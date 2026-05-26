@@ -24,7 +24,7 @@ const path = `/${lang}/work/${entry.data.canonicalSlug}/`;
       </aside>
       <article class="prose">
         <slot />
-        <ArchitectureDiagram nodes={entry.data.architecture} />
+        <ArchitectureDiagram nodes={entry.data.architecture} locale={lang} />
       </article>
     </div>
   </section>

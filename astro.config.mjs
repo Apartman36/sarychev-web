@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-const SITE_URL = "https://Apartman36.github.io";
+const SITE_URL = "https://apartman36.github.io";
 const BASE_PATH = "/sarychev-web/";
 
 export default defineConfig({

@@ -23,12 +23,12 @@ const data = {
   ru: {
     eyebrow: "Компетенции",
     title: "Системы вокруг моделей, а не просто промпты.",
-    description: "Самая сильная зона - там, где встречаются неясная задача, ограничения AI и интеграции.",
+    description: "Самая сильная зона - там, где встречаются неясная задача, ограничения AI и детали интеграции.",
     cards: [
-      ["Агентные workflow", "Проектирую агентные циклы с инструментами, состоянием, безопасными действиями, памятью, логированием и точками ревью.", ["MCP", "Playwright", "tool calling"]],
+      ["Агентные workflows", "Проектирую агентные циклы с инструментами, явным состоянием, безопасными действиями, памятью, логированием и точками ревью.", ["MCP", "Playwright", "tool calling"]],
       ["RAG и knowledge systems", "Собираю поиск по внутренним документам: chunking, embeddings, BM25, гибридный retrieval, роли доступа и проверяемые ответы.", ["Qdrant", "FAISS", "BM25"]],
       ["Document AI / IDP", "Превращаю длинные PDF и неструктурированные документы в данные через OCR, anchors, LLM-оркестрацию и async backend.", ["OCR", "PyMuPDF", "FastAPI"]],
-      ["Business MVP", "Делаю прикладные MVP под доменные процессы: импорт, отчёты, dashboard, автоматизация и воспроизводимый деплой.", ["TypeScript", "Docker", "PostgreSQL"]],
+      ["Business MVP", "Делаю прикладные MVP под доменные процессы: импорт, отчёты, dashboards, автоматизация и воспроизводимый деплой.", ["TypeScript", "Docker", "PostgreSQL"]],
     ],
   },
 }[locale];
@@ -42,7 +42,7 @@ const data = {
         <article>
           <h3>{title}</h3>
           <p>{description}</p>
-          <StackTags stack={stack as string[]} />
+          <StackTags stack={stack as string[]} locale={locale} />
         </article>
       ))}
     </div>

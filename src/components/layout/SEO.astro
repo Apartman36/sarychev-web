@@ -14,7 +14,7 @@ const { title, description, lang, path, type = "website" } = Astro.props;
 const canonical = absoluteUrl(path);
 const otherLocale = lang === "en" ? "ru" : "en";
 const otherPath = path.replace(/^\/(en|ru)(\/|$)/, `/${otherLocale}$2`);
-const currentOg = absoluteUrl(siteConfig.ogImage);
+const currentOg = absoluteUrl(siteConfig.ogImages[lang]);
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",

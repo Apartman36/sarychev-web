@@ -2,6 +2,7 @@
 import Button from "../common/Button.astro";
 import { links } from "../../data/links";
 import { localePath, type Locale } from "../../utils/site";
+import { t } from "../../i18n/ui";
 
 interface Props {
   locale: Locale;
@@ -14,14 +15,14 @@ const copy = {
     sub: "Agents, MCP tools, RAG pipelines, parsers, IDP workflows, and async backends - shipped as production-minded MVPs.",
     view: "View work",
     contact: "Contact",
-    resume: "Resume",
+    resume: "Request resume",
   },
   ru: {
     headline: "Собираю прикладные AI-системы из хаотичных задач.",
     sub: "AI-агенты, MCP-инструменты, RAG-пайплайны, парсеры, IDP и async backend - в формате production-MVP.",
-    view: "Работы",
+    view: "Смотреть работы",
     contact: "Связаться",
-    resume: "Резюме",
+    resume: "Резюме по запросу",
   },
 }[locale];
 ---
@@ -36,13 +37,13 @@ const copy = {
         <Button href={localePath(locale, "/work/")} variant="primary">{copy.view}</Button>
         <Button href={links.emailHref}>{copy.contact}</Button>
       </div>
-      <div class="secondary-links" aria-label="Profile links">
+      <div class="secondary-links" aria-label={t(locale, "profileLinks")}>
         <a href={links.github}>GitHub</a>
         <a href={links.x}>X</a>
         <a href={links.resumeHref}>{copy.resume}</a>
       </div>
     </div>
-    <div class="terminal visual" aria-label="AI system workflow">
+    <div class="terminal visual" aria-label={t(locale, "aiWorkflow")}>
       <div class="terminal-top">
         <span></span><span></span><span></span>
       </div>

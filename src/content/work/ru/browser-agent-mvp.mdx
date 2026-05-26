@@ -8,11 +8,11 @@ date: "2025"
 repoUrl: "https://github.com/Apartman36/browser_agent_mvp"
 stack: ["Playwright", "MCP", "tool calling", "ARIA snapshots", "action logging"]
 capabilities: ["AI Agents", "MCP", "Browser Automation"]
-metrics: ["Показывает практический agent loop design для browser automation."]
+metrics: ["Показывает практическое проектирование agent loop для browser automation."]
 order: 3
 lang: "ru"
 canonicalSlug: "browser-agent-mvp"
-architecture: ["Пользовательская задача", "ARIA snapshot", "Agent loop", "Tool schema", "Visible Chromium", "Action log"]
+architecture: ["Пользовательская задача", "ARIA snapshot", "Agent loop", "Tool schema", "Видимый Chromium", "Action log"]
 ---
 
 ## Контекст
@@ -27,24 +27,24 @@ Browser agents должны понимать меняющиеся страниц
 
 - Browser остаётся видимым для проверки.
 - Действия описаны как structured tool calls.
-- Agent loop требует memory и result logging.
+- Agent loop требует памяти и логирования результатов.
 - MCP server нужен для подключения внешних tools.
 
 ## Подход
 
-Agent читает ARIA snapshot страницы, выбирает structured actions, выполняет их через Playwright, хранит recent action memory и пишет результаты в логи.
+Agent читает ARIA snapshot страницы, выбирает structured actions, выполняет их через Playwright, хранит память последних действий и пишет результаты в логи.
 
-## Implementation highlights
+## Ключевые решения
 
 - ARIA snapshots как слой представления страницы.
 - Tool calls через schemas.
-- Recent action memory против повторяющихся и противоречивых шагов.
-- MCP server с browser tools для внешнего agent connection.
+- Память последних действий против повторяющихся и противоречивых шагов.
+- MCP server с browser tools для подключения внешнего agent.
 
 ## Результат
 
-Проект показывает practical agent loop design для browser automation: explicit state, visible execution и reviewable logs.
+Проект показывает практическое проектирование agent loop для browser automation: явное состояние, видимое выполнение и проверяемые логи.
 
 ## Что это демонстрирует
 
-Agent loop design, Playwright automation, MCP tools и human-reviewable browser workflows.
+Agent loop design, Playwright automation, MCP tools и browser workflows с ревью человеком.

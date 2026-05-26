@@ -1,6 +1,7 @@
 ---
 import type { Locale } from "../../utils/site";
 import { swapLocalePath } from "../../utils/site";
+import { t } from "../../i18n/ui";
 
 interface Props {
   locale: Locale;
@@ -12,7 +13,7 @@ const enHref = swapLocalePath(pathname, "en");
 const ruHref = swapLocalePath(pathname, "ru");
 ---
 
-<nav class="language-switcher" aria-label="Language switcher">
+<nav class="language-switcher" aria-label={t(locale, "languageSwitcher")}>
   <a href={enHref} aria-current={locale === "en" ? "page" : undefined}>EN</a>
   <a href={ruHref} aria-current={locale === "ru" ? "page" : undefined}>RU</a>
 </nav>

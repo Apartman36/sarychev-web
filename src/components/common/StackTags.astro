@@ -1,16 +1,19 @@
 ---
 import Badge from "./Badge.astro";
+import { t } from "../../i18n/ui";
+import type { Locale } from "../../utils/site";
 
 interface Props {
   stack: string[];
   limit?: number;
+  locale?: Locale;
 }
 
-const { stack, limit } = Astro.props;
+const { stack, limit, locale = "en" } = Astro.props;
 const tags = limit ? stack.slice(0, limit) : stack;
 ---
 
-<div class="stack" aria-label="Technology stack">
+<div class="stack" aria-label={t(locale, "technologyStack")}>
   {tags.map((item) => <Badge label={item} />)}
 </div>
 
